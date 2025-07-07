@@ -22,7 +22,7 @@ export const routes: Routes = [
     { path: 'contact', component: ContactUsComponent, canActivate: [AuthGuard]},
   { path: 'userdishes', component: UserDishesComponent, canActivate: [AuthGuard] },
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
-  { path: 'recipe/:id', component: RecipeDetailComponent, canActivate: [AuthGuard] },
+  // { path: 'recipe/:id', component: RecipeDetailComponent, canActivate: [AuthGuard] },
   { path: 'share-recipe', component: RecipeFormComponent, canActivate: [AuthGuard] },
   
   // Fallback route

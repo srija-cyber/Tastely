@@ -1640,6 +1640,16 @@
       "id": "d310",
       "userId": "user1",
       "recipeId": "4"
+    },
+    {
+      "id": "893b",
+      "userId": "",
+      "recipeId": "111"
+    },
+    {
+      "id": "8b59",
+      "userId": "currentUserId",
+      "recipeId": "111"
     }
   ]
 }
