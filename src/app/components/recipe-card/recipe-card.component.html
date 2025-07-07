@@ -1,0 +1,15 @@
+<div class="card h-100 shadow-sm border-0">
+  <img [src]="recipe.image" class="card-img-top" [alt]="recipe.name">
+  <div class="card-body">
+    <h5 class="card-title d-flex justify-content-between align-items-center">
+      {{ recipe.name }}
+      <button class="btn btn-sm" (click)="onToggleFavorite()">
+        <i class="bi" [ngClass]="isFavorite ? 'bi-heart-fill text-danger' : 'bi-heart'"></i>
+      </button>
+    </h5>
+    <p class="card-text mb-1"><strong>Cuisine:</strong> {{ recipe.cuisine }}</p>
+    <p class="card-text mb-1"><strong>Prep Time:</strong> {{ recipe.prepTime }} mins</p>
+    <p class="card-text mb-2"><strong>Calories:</strong> {{ recipe.nutrition?.calories }}</p>
+    <button id="custom-btn" class="btn btn-outline-primary w-100" (click)="onViewDetails()">View Recipe</button>
+  </div>
+</div>

@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@fortawesome/fontawesome-free/css/all.css';
+:root {
+  --primary-color: #059669;
+  --primary-dark: #047857;
+  --primary-light: #d1fae5;
+  --secondary-color: #f59e0b;
+  --dark-color: #1f2937;
+  --light-color: #f3f4f6;
+}
+/* Change primary color to green (from your navbar) */
+:root {
+  --bs-primary: #059669;
+  --bs-primary-rgb: 5, 150, 105;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+/* Or to remove blue completely */
+.btn-primary {
+  background-color: #059669;
+  border-color: #059669;
+}

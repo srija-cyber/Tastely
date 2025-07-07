@@ -1,0 +1,24 @@
+.card-title {
+  font-size: 1.1rem;
+}
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+.btn-sm i {
+  font-size: 1.2rem;
+}
+#custom-btn {
+  background-color: #059669;
+  border: solid 0px;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#custom-btn:hover {
+  background-color: #047857;
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}

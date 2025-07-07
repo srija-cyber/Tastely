@@ -1,0 +1,17 @@
+<div class="ingredient-selector">
+  <div *ngFor="let category of categories" class="mb-4">
+    <h5 class="mb-2">{{ category.name }}</h5>
+    <div class="d-flex flex-wrap gap-2">
+  <span *ngFor="let item of category.items"
+      class="badge p-2 cursor-pointer border"
+      [class.bg-primary]="selectedIngredients.includes(item)"
+      [class.bg-light]="!selectedIngredients.includes(item)"
+      [class.text-white]="selectedIngredients.includes(item)"
+      [class.text-dark]="!selectedIngredients.includes(item)"
+      (click)="toggleIngredient(item)">
+  {{ item }}
+  <i *ngIf="selectedIngredients.includes(item)" class="fas fa-check ms-1"></i>
+  </span>
+    </div>
+  </div>
+</div>

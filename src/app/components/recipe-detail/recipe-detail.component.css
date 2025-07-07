@@ -1,0 +1,34 @@
+.card-header img {
+  object-fit: cover;
+  height: 400px;
+  width: 100%;
+}
+
+.ingredient-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.ingredient-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.ingredient-list li:last-child {
+  border-bottom: none;
+}
+
+.instructions p {
+  margin-bottom: 1rem;
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .card-header img {
+    height: 250px;
+  }
+}

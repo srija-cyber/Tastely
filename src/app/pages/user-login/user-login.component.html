@@ -1,0 +1,40 @@
+<div class="page-alignment">
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<form action="#">
+				<h1>Create Account</h1>
+				<span class="m-3">Use your email for registration</span>
+				<input name="userName" type="text" placeholder="Name" [(ngModel)]="signUpObj.userName" />
+				<input name="email" type="email" placeholder="Email" [(ngModel)]="signUpObj.email"/>
+				<input name="password" type="password" placeholder="Password" [(ngModel)]="signUpObj.password" />
+				<button (click)="onSignUp()">Sign Up</button>
+			</form>
+		</div>
+		<div class="form-container sign-in-container">
+			<form action="#">
+				<h1>Sign in</h1>
+				<span class="m-3">Use your email account for Sign In</span>
+				<input name="email" type="email" placeholder="Email" [(ngModel)]="loginObj.email" />
+				<input name="password" type="password" placeholder="Password" [(ngModel)]="loginObj.password" />
+				<a href="#">Forgot your password?</a>
+				<button (click)="onLoginIn()">Sign In</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your personal info</p>
+					<button class="ghost" id="signIn"  (click)="toggleForms()">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="ghost" id="signUp"  (click)="toggleForms()">Sign Up</button>
+				</div>
+			</div>
+	</div>
+</div>
+
+
+</div>

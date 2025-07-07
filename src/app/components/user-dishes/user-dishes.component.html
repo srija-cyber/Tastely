@@ -1,0 +1,92 @@
+<div class="container py-4">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h4>Add Your Recipe</h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit(recipeForm)" #recipeForm="ngForm">
+        <!-- Recipe Name -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Recipe Name*</label>
+          <input type="text" class="form-control" id="name" 
+                 [(ngModel)]="recipe.name" name="name" required>
+        </div>
+
+        <!-- Cuisine Type -->
+        <div class="mb-3">
+          <label for="cuisine" class="form-label">Cuisine*</label>
+          <select class="form-select" id="cuisine" 
+                  [(ngModel)]="recipe.cuisine" name="cuisine" required>
+            <option value="">Select Cuisine</option>
+            <option *ngFor="let cuisine of cuisines" [value]="cuisine">
+              {{cuisine}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Diet Type -->
+        <div class="mb-3">
+          <label for="dietType" class="form-label">Diet Type*</label>
+          <select class="form-select" id="dietType" 
+                  [(ngModel)]="recipe.dietType" name="dietType" required>
+            <option value="">Select Diet Type</option>
+            <option *ngFor="let diet of dietTypes" [value]="diet">
+              {{diet}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Ingredients -->
+        <div class="mb-3">
+          <label class="form-label">Ingredients*</label>
+          <app-ingredient-selector 
+            [(selectedIngredients)]="recipe.ingredients"
+            [categories]="ingredientCategories">
+          </app-ingredient-selector>
+        </div>
+
+        <!-- Instructions -->
+        <div class="mb-3">
+          <label for="instructions" class="form-label">Instructions*</label>
+          <textarea class="form-control" id="instructions" rows="5"
+                    [(ngModel)]="recipe.instructions" name="instructions" required>
+          </textarea>
+        </div>
+
+        <!-- Preparation Time -->
+        <div class="mb-3">
+          <label for="prepTime" class="form-label">Preparation Time (minutes)*</label>
+          <input type="number" class="form-control" id="prepTime" 
+                 [(ngModel)]="recipe.prepTime" name="prepTime" required>
+        </div>
+
+        <!-- Image URL -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Image URL</label>
+          <input type="url" class="form-control" id="image" 
+                 [(ngModel)]="recipe.image" name="image">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" 
+                [disabled]="recipeForm.invalid || isSubmitting">
+          <span *ngIf="!isSubmitting">Submit Recipe</span>
+          <span *ngIf="isSubmitting">
+            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            Submitting...
+          </span>
+        </button>
+
+        <!-- Success Message -->
+        <div *ngIf="submitSuccess" class="alert alert-success mt-3">
+          Recipe submitted successfully!
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="submitError" class="alert alert-danger mt-3">
+          {{submitError}}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

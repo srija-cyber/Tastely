@@ -1,0 +1,15 @@
+<div class="mt-4">
+  <h5>Comments</h5>
+  
+  <div *ngFor="let comment of comments" class="card mb-2">
+    <div class="card-body">
+      <p class="card-text">{{ comment.text }}</p>
+      <small class="text-muted">{{ comment.userId }} - {{ comment.date | date }}</small>
+    </div>
+  </div>
+  
+  <div class="mt-3">
+    <textarea class="form-control mb-2" [(ngModel)]="newComment" placeholder="Add your comment"></textarea>
+    <button class="btn btn-primary" (click)="addComment()">Post Comment</button>
+  </div>
+</div>

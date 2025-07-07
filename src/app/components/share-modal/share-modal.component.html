@@ -1,0 +1,45 @@
+<div class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h5 class="modal-title">Share Recipe</h5>
+      <button type="button" class="close-btn" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="mb-3">
+        <label class="form-label">Share Link</label>
+        <div class="input-group">
+          <input type="text" class="form-control" [value]="shareUrl" readonly>
+          <button class="btn btn-primary" (click)="copyToClipboard()">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h5 class="modal-title">Share "{{recipe?.name}}"</h5>
+      <button type="button" class="close-btn" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="mb-3">
+        <label class="form-label">Share Link</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" [value]="shareUrl" readonly>
+          <button class="btn btn-primary" (click)="copyToClipboard()">
+            <i class="fas fa-copy me-1"></i> Copy
+          </button>
+        </div>
+      </div>
+      <div class="social-share-buttons">
+        <button class="btn btn-facebook" (click)="shareOnFacebook()">
+          <i class="fab fa-facebook-f me-2"></i> Facebook
+        </button>
+        <button class="btn btn-twitter" (click)="shareOnTwitter()">
+          <i class="fab fa-twitter me-2"></i> Twitter
+        </button>
+        <button class="btn btn-whatsapp" (click)="shareOnWhatsApp()">
+          <i class="fab fa-whatsapp me-2"></i> WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

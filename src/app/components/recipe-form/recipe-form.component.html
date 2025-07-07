@@ -1,0 +1,48 @@
+<div class="card shadow">
+  <div class="card-header bg-primary text-white">
+    <h4>Share Your Recipe</h4>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label">Recipe Name</label>
+        <input type="text" class="form-control" [(ngModel)]="recipe.name" name="name" required>
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Cuisine</label>
+        <select class="form-select" [(ngModel)]="recipe.cuisine" name="cuisine">
+          <option *ngFor="let c of cuisines" [value]="c">{{c}}</option>
+        </select>
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Diet Type</label>
+        <select class="form-select" [(ngModel)]="recipe.dietType" name="dietType">
+          <option *ngFor="let d of dietTypes" [value]="d">{{d}}</option>
+        </select>
+      </div>
+      
+      <!-- Updated Ingredients Section Only -->
+      <div class="mb-3">
+        <label class="form-label">Ingredients</label>
+        <app-ingredient-selector 
+          [(selectedIngredients)]="recipe.ingredients"
+          [categories]="ingredientCategories">
+        </app-ingredient-selector>
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Instructions</label>
+        <textarea class="form-control" rows="5" [(ngModel)]="recipe.instructions" name="instructions"></textarea>
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Image URL</label>
+        <input type="text" class="form-control" [(ngModel)]="recipe.image" name="image">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit Recipe</button>
+    </form>
+  </div>
+</div>

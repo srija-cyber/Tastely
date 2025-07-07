@@ -1,0 +1,104 @@
+
+<!-- Main Container -->
+<div class="container py-4">
+  
+  <!-- Search and Filter Section -->
+  <div class="card shadow-sm mb-4 border-0">
+    <div class="card-body p-4">
+      <!-- Dish Search -->
+      <div class="mb-4">
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0">
+            <i class="fas fa-search text-muted"></i>
+          </span>
+          <input type="text" class="form-control border-start-0 ps-0" 
+                 placeholder="Search dish name (e.g. Biryani, Pasta, Salad)" 
+                 [(ngModel)]="dishQuery" (input)="onDishSearch()">
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Ingredient Selector -->
+        <div class="col-md-6 mb-4">
+          <label class="form-label fw-bold text-muted">Select Ingredients</label>
+          <div class="d-flex flex-wrap">
+            <span *ngFor="let ing of availableIngredients"
+                  class="badge m-1 px-3 py-2 rounded-pill fw-normal cursor-pointer"
+                  [class.bg-primary]="selectedIngredients.includes(ing)"
+                  [class.bg-light]="!selectedIngredients.includes(ing)"
+                  [class.text-white]="selectedIngredients.includes(ing)"
+                  [class.text-dark]="!selectedIngredients.includes(ing)"
+                  (click)="toggleIngredient(ing)">
+              <i class="fas fa-check-circle me-1" *ngIf="selectedIngredients.includes(ing)"></i>
+              {{ ing }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Cuisine Filter -->
+        <div class="col-md-6 mb-4">
+          <label class="form-label fw-bold text-muted">Select Cuisine</label>
+          <div class="d-flex flex-wrap">
+            <button *ngFor="let c of cuisines"
+              type="button"
+              class="btn m-1 px-3 rounded-pill"
+              [class.btn-primary]="c === selectedCuisine"
+              [class.btn-outline-primary]="c !== selectedCuisine"
+              (click)="selectCuisine(c)">
+              {{ c }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add this to the filter section -->
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-bold text-muted">Diet Type</label>
+      <div class="d-flex flex-wrap">
+        <button *ngFor="let d of dietTypes"
+          type="button"
+          class="btn m-1 px-3 rounded-pill"
+          [class.btn-primary]="d === selectedDietType"
+          [class.btn-outline-primary]="d !== selectedDietType"
+          (click)="selectDietType(d)">
+          {{ d }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recipe Cards Grid -->
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let recipe of recipes">
+      <app-recipe-card
+        [recipe]="recipe"
+        [isFavorite]="isFavorite(recipe.id)"
+        (viewDetails)="goToDetails($event)"
+        (toggleFavorite)="toggleFavorite($event)">
+      </app-recipe-card>
+    </div>
+  </div>
+
+  <!-- No Recipes Message -->
+  <div *ngIf="recipes.length === 0" class="text-center mt-5 py-5">
+    <div class="empty-state">
+      <i class="fas fa-utensils fa-4x text-muted mb-3"></i>
+      <h4 class="text-muted">No recipes found</h4>
+      <p class="text-muted">Try adjusting your search or filters to discover delicious recipes!</p>
+      <button class="btn btn-outline-primary mt-3" (click)="resetFilters()">
+        <i class="fas fa-sync me-2"></i>Reset Filters
+      </button>
+    </div>
+  </div>
+</div>
+<!-- AI Chatbot Script -->
+<!-- <div id="jotform-chatbot-container"></div> -->
+
+<!-- Add this at the bottom of your home.component.html -->
+<app-share-modal 
+  *ngIf="showShareModal"
+  [recipe]="recipeToShare"
+  (close)="closeShareModal()">
+</app-share-modal>
+

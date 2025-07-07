@@ -1,0 +1,26 @@
+<div class="favorites-container">
+  <h2>Your Favorite Recipes</h2>
+
+  @if (loading) {
+    <div class="loading-message">
+      Loading your favorites...
+    </div>
+  }
+
+  @if (!loading && favorites.length === 0) {
+    <div class="empty-message">
+      You haven't added any favorites yet.
+    </div>
+  }
+
+  @if (!loading && favorites.length > 0) {
+    <div class="favorites-grid">
+      @for (favorite of favorites; track favorite.id) {
+        <div class="favorite-card">
+          <div>Recipe ID: {{ favorite.recipeId }}</div>
+          <!-- Add more recipe details here -->
+        </div>
+      }
+    </div>
+  }
+</div>
